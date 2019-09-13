@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Enhancements
+
+* Add webpacker compatibility with config switch and installation generator. [#5855] by [@sgara]
+
 ## 2.6.0 [☰](https://github.com/activeadmin/activeadmin/compare/v2.5.0..v2.6.0)
 
 ### Enhacements
@@ -541,6 +545,7 @@ Please check [0-6-stable] for previous changes.
 [#5946]: https://github.com/activeadmin/activeadmin/pull/5946
 [#5956]: https://github.com/activeadmin/activeadmin/pull/5956
 [#5957]: https://github.com/activeadmin/activeadmin/pull/5957
+[#5855]: https://github.com/activeadmin/activeadmin/pull/5855
 
 [@5t111111]: https://github.com/5t111111
 [@aarek]: https://github.com/aarek
