@@ -34,6 +34,12 @@ Now install the development dependencies:
 bundle install
 ```
 
+To update javascript bundle run (add `-w` flag for watch mode):
+
+```sh
+yarn build
+```
+
 Now you should be able to run the entire suite using:
 
 ```sh
