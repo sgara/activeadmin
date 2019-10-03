@@ -88,29 +88,8 @@ class FixmeLinter
   end
 end
 
-#
-# Checks that javascript bundle is up to date
-#
-class JavascriptBundleLinter
-  include LinterMixin
-
-  def clean?(file)
-    stdout, status = Open3.capture2("git diff --exit-code #{file}")
-    status == 0
-  end
-
-  def applicable_files
-    Open3.capture2('yarn build')
-    ["app/assets/javascripts/active_admin/base.js"]
-  end
-
-  def failure_message_for(offenses)
-    "Javascript bundle is out of date. Please run `yarn build` and commit changes."
-  end
-end
-
 desc "Lints ActiveAdmin code base"
-task lint: ["lint:rubocop", "lint:mdl", "lint:gherkin_lint", "lint:trailing_blank_lines", "lint:missing_final_new_line", "lint:trailing_whitespace", "lint:fixme", "lint:javascript_bundle", "lint:rspec"]
+task lint: ["lint:rubocop", "lint:mdl", "lint:gherkin_lint", "lint:trailing_blank_lines", "lint:missing_final_new_line", "lint:trailing_whitespace", "lint:fixme", "lint:rspec"]
 
 namespace :lint do
   require "rubocop/rake_task"
@@ -157,11 +136,6 @@ namespace :lint do
     puts "Checking for FIXME strings..."
 
     FixmeLinter.new.run
-  end
-
-  desc "Check that javascript bundle is up to date"
-  task :javascript_bundle do
-    JavascriptBundleLinter.new.run
   end
 
   desc "RSpec specs for linting project files"
