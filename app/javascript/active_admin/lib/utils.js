@@ -3,7 +3,7 @@ function hasTurbolinks() {
 }
 
 function turbolinksVisit(params) {
-  const path = [window.location.pathname, '?', this.toQueryString(params)].join('')
+  const path = [window.location.pathname, '?', toQueryString(params)].join('')
   Turbolinks.visit(path);
 }
 
@@ -14,7 +14,7 @@ function queryString() {
 function queryStringToParams() {
   const decode = (value) => decodeURIComponent((value || '').replace(/\+/g, '%20'));
 
-  return this.queryString()
+  return queryString()
     .split("&")
     .map(pair => pair.split("="))
     .map(([key, value]) => {

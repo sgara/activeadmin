@@ -294,14 +294,17 @@
     return typeof Turbolinks !== "undefined" && Turbolinks.supported;
   }
   function turbolinksVisit(params) {
-    var path = [ window.location.pathname, "?", this.toQueryString(params) ].join("");
+    var path = [ window.location.pathname, "?", toQueryString(params) ].join("");
     Turbolinks.visit(path);
+  }
+  function queryString() {
+    return (window.location.search || "").replace(/^\?/, "");
   }
   function queryStringToParams() {
     var decode = function decode(value) {
       return decodeURIComponent((value || "").replace(/\+/g, "%20"));
     };
-    return this.queryString().split("&").map(function(pair) {
+    return queryString().split("&").map(function(pair) {
       return pair.split("=");
     }).map(function(_ref) {
       var key = _ref[0], value = _ref[1];
